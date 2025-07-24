@@ -1,0 +1,104 @@
+body {
+  background-color: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-container {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  margin-left: 320px;
+  margin-top: 70px;
+  max-width: 480px;
+  width: 100%;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.6);
+}
+
+.form-container h2 {
+  margin-bottom: 24px;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.form-container label {
+  display: block;
+  margin-top: 20px;
+  font-weight: 500;
+  color: #cccccc;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 6px;
+  background-color: #3a3a3a;
+  color: #ffffff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 6px #4caf50;
+}
+
+.date-check {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.btn-check {
+  padding: 10px 14px;
+  background-color: #444;
+  color: #ddd;
+  border: 1px solid #666;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-check:hover {
+  background-color: #555;
+}
+
+.btn-invite {
+  margin-top: 28px;
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 8px #4caf50;
+  transition: background-color 0.3s ease;
+}
+
+.btn-invite:disabled {
+  background-color: #555;
+  color: #aaa;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.alert {
+  color: #ff4d4f;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.tick {
+  color: #4caf50;
+  margin-top: 10px;
+  font-weight: bold;
+}

@@ -1,0 +1,39 @@
+<div class="form-container">
+  <h2>Create Event</h2>
+
+  <!-- Event Title -->
+  <label for="eventName">Title</label>
+  <input id="eventName" class="form-control" type="text" [(ngModel)]="event.name" placeholder="Event title" />
+
+  <!-- Date + Time + Duration -->
+  <label for="eventDate">Date</label>
+  <div class="date-check">
+    <input id="eventDate" class="form-control" type="date" [(ngModel)]="event.date" />
+    <button class="btn-check" (click)="checkIfHoliday(event.date)">Check Date</button>
+  </div>
+
+  <!-- Validity check status -->
+  <div *ngIf="event.date">
+    <ng-container [ngSwitch]="dateStatus">
+      <div *ngSwitchCase="'holiday'" class="alert">❌ Date is a holiday. Please choose another date.</div>
+      <div *ngSwitchCase="'weekend'" class="alert">❌ Date is a weekend. Please choose another date.</div>
+      <div *ngSwitchCase="'valid'" class="tick">✅ Date is valid for booking</div>
+    </ng-container>
+  </div>
+
+  <!-- Guest Info -->
+  <label for="guestName">Guest Name</label>
+  <input id="guestName" class="form-control" type="text" [(ngModel)]="event.guestName" placeholder="e.g. Arushi Sharma" />
+
+  <label for="guestEmail">Guest Email</label>
+  <input id="guestEmail" class="form-control" type="email" [(ngModel)]="event.guestEmail" placeholder="e.g. arushi@email.com" />
+
+  <!-- Action Button -->
+  <button
+    class="btn-invite"
+    [disabled]="!event.name || !event.date || !event.guestName || !event.guestEmail || dateStatus !== 'valid'"
+    (click)="addEventAndInvite()"
+  >
+    Send Invite
+  </button>
+</div>

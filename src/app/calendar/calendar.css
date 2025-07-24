@@ -1,0 +1,110 @@
+/* Layout container */
+.layout-container {
+  width: 83.5vw;
+  height: 120vh;
+  display: flex;
+  background-color: #0f0101;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main calendar section */
+.calendar-section {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.view-btn,
+.add-btn {
+  background-color: #1f1f1f;
+  color: white;
+  border: 1px solid #333;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.view-btn:hover,
+.add-btn:hover {
+  background-color: #2b2b2b;
+}
+
+/* Month navigation */
+.month-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 25px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* Calendar grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  background-color: #1c1c1c;
+  border-radius: 8px;
+  height: 80px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.calendar-day:hover {
+  background-color: #292929;
+}
+
+.calendar-day.holiday {
+  background-color: #8439817a !important;
+  color: white;
+  font-weight: bold;
+  border: 2px solid #843981;
+}
+
+.calendar-day.event {
+  background-color: #004d40;
+  color: #ffffff;
+  border: 2px solid #00e676;
+}
+
+.calendar-day.empty {
+  background-color: transparent;
+  pointer-events: none;
+}
+
+/* Event label inside calendar day */
+.event-label {
+  font-size: 0.6rem;
+  color: #fff;
+  background: #00c853;
+  padding: 2px 4px;
+  margin-top: 4px;
+  border-radius: 4px;
+}

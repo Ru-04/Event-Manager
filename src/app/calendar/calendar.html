@@ -1,0 +1,39 @@
+<div class="layout-container">
+  <main class="calendar-section">
+    <header class="calendar-header">
+      <h1>Calendar</h1>
+      <div class="calendar-controls">
+        <button class="add-btn" (click)="goToAddEvent()">+ Add event</button>
+      </div>
+    </header>
+
+    <div class="month-bar">
+      <button (click)="prevMonth()">&#8592;</button>
+      <span>{{ monthName }} {{ currentYear }}</span>
+      <button (click)="nextMonth()">&#8594;</button>
+    </div>
+
+    <div class="calendar-grid weekdays">
+      <div *ngFor="let day of weekDays">{{ day }}</div>
+    </div>
+
+    <div class="calendar-grid days">
+      <div
+        *ngFor="let cell of getCalendarDays()"
+        class="calendar-day"
+        [ngClass]="{
+          holiday: isHoliday(cell.date),
+          empty: !cell.day,
+          event: isEvent(cell.date)
+        }"
+        (click)="cell.date && onDateClick(cell.date)"
+      >
+        <span *ngIf="cell.day">{{ cell.day }}</span>
+
+        <div class="event-label" *ngIf="isEvent(cell.date)">
+          {{ getEventName(cell.date) }}
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
