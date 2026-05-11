@@ -154,7 +154,7 @@ export class GuestFormComponent {
     };
 
     await emailjs.send(
-      'service_42cgpr9',
+      'service_snko6mr',
       'template_xo2eq5g',
       templateParams,
       'E7A8Qes88V3VXEqMh'
