@@ -6,5 +6,5 @@ export const routes: Routes = [
   { path: '', redirectTo: '/calendar', pathMatch: 'full' },
   { path: 'calendar', component: CalendarComponent },
   { path: 'guests', component: GuestFormComponent }
- 
+  
 ];

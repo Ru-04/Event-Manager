@@ -52,10 +52,12 @@ export class CalendarComponent implements OnInit {
     return this.http.get<any>(url).toPromise().then(
       (response) => {
         console.log('Calendarific Response:', response);
-        this.holidays = response?.response?.holidays.map((h: any) => ({
-          name: h.name,
-          date: h.date.iso.split('T')[0]
-        }));
+        // In loadHolidays() method
+          this.holidays = response?.response?.holidays.map((h: any) => ({
+            name: h.name,
+            date: h.date.iso.split('T')[0] // This is correct as API returns UTC
+          }));
+        
         console.log(` Holidays loaded: ${this.holidays.length}`);
       },
       (err) => {
@@ -66,22 +68,26 @@ export class CalendarComponent implements OnInit {
   }
 
   getCalendarDays(): { day: number | null, date: string }[] {
-    const firstDay = new Date(this.currentYear, this.currentMonth, 1).getDay();
-    const totalDays = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
-    const days: { day: number | null, date: string }[] = [];
+  const firstDay = new Date(this.currentYear, this.currentMonth, 1).getDay();
+  const totalDays = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
+  const days: { day: number | null, date: string }[] = [];
 
-    for (let i = 0; i < firstDay; i++) {
-      days.push({ day: null, date: '' });
-    }
-
-    for (let day = 1; day <= totalDays; day++) {
-      const dateObj = new Date(this.currentYear, this.currentMonth, day);
-      const dateStr = dateObj.toISOString().split('T')[0];
-      days.push({ day, date: dateStr });
-    }
-
-    return days;
+  for (let i = 0; i < firstDay; i++) {
+    days.push({ day: null, date: '' });
   }
+
+  for (let day = 1; day <= totalDays; day++) {
+    const dateObj = new Date(this.currentYear, this.currentMonth, day);
+    // Use local date components instead of ISO string
+    const year = dateObj.getFullYear();
+    const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+    const date = String(dateObj.getDate()).padStart(2, '0');
+    const dateStr = `${year}-${month}-${date}`;
+    days.push({ day, date: dateStr });
+  }
+
+  return days;
+}
 
   async nextMonth() {
     if (this.currentMonth === 11) {
